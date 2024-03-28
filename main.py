@@ -1,3 +1,25 @@
+
+# List to store expenses
+expenses = []
+
+# List to store crops
+crops = []
+
+# Function to display all crops
+def display_crops():
+    print("---- Crops ----")
+    for crop in crops:
+        print(f"Name: {crop['name']}, Planting Date: {crop['planting_date']}, Variety: {crop['variety']}")
+
+
+# Function to display all expenses
+def display_expenses():
+    print("---- Expenses ----")
+    for expense in expenses:
+        print(f"Amount: {expense['amount']}, Category: {expense['category']}, Description: {expense['description']}")
+
+
+
 # Function to save expenses to a text file
 def save_expenses():
     with open("expenses.txt", "w") as file:
