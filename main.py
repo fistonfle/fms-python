@@ -1,92 +1,81 @@
+# main.py
+from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users
 
-# List to store expenses
+# Initialize expenses and crops lists
 expenses = []
-
-# List to store crops
 crops = []
 
-# Function to display all crops
-def display_crops():
-    print("---- Crops ----")
-    for crop in crops:
-        print(f"Name: {crop['name']}, Planting Date: {crop['planting_date']}, Variety: {crop['variety']}")
+# Initialize users dictionary
+users = {}
 
+# Define the filename for storing user data
+USERS_FILE = "users.txt"
 
-# Function to display all expenses
-def display_expenses():
-    print("---- Expenses ----")
-    for expense in expenses:
-        print(f"Amount: {expense['amount']}, Category: {expense['category']}, Description: {expense['description']}")
+# Load users from file
+users = load_users(USERS_FILE)
 
+# Function to login an existing user
+def login(username, password):
+    if username not in users or users[username] != password:
+        print("Invalid username or password. Please try again.")
+        return False
+    else:
+        print("Login successful. Welcome back, {}!".format(username))
+        return True
 
-
-# Function to save expenses to a text file
-def save_expenses():
-    with open("expenses.txt", "w") as file:
-        for expense in expenses:
-            file.write("{},{},{}\n".format(expense['amount'], expense['category'], expense['description']))
-
-# Function to save crops to a text file
-def save_crops():
-    with open("crops.txt", "w") as file:
-        for crop in crops:
-            file.write("{},{},{}\n".format(crop['name'], crop['planting_date'], crop['variety']))
-
-# Function to load expenses from a text file
-def load_expenses():
-    try:
-        with open("expenses.txt", "r") as file:
-            for line in file:
-                amount, category, description = line.strip().split(',')
-                expenses.append({"amount": float(amount), "category": category, "description": description})
-    except FileNotFoundError:
-        # If the file doesn't exist, there are no expenses yet
-        pass
-
-# Function to load crops from a text file
-def load_crops():
-    try:
-        with open("crops.txt", "r") as file:
-            for line in file:
-                name, planting_date, variety = line.strip().split(',')
-                crops.append({"name": name, "planting_date": planting_date, "variety": variety})
-    except FileNotFoundError:
-        # If the file doesn't exist, there are no crops yet
-        pass
-
-# Main function to handle user input and interaction
+# Main function to handle user interaction
 def main():
-    # Load existing data from text files
-    load_expenses()
-    load_crops()
-
+    logged_in = False
     while True:
         print("\nFarm Management System (FMS)")
-        print("1. Add Expense")
-        print("2. Add Crop")
-        print("3. View Expenses")
-        print("4. View Crops")
-        print("5. Exit")
+        if not logged_in:
+            print("1. Signup")
+            print("2. Login")
+        else:
+            print("1. Add Expense")
+            print("2. Add Crop")
+            print("3. View Expenses")
+            print("4. View Crops")
+            print("5. Logout")
+        print("6. Exit")
 
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            amount = float(input("Enter expense amount: "))
-            category = input("Enter expense category: ")
-            description = input("Enter expense description: ")
-            add_expense(amount, category, description)
-            save_expenses()  # Save expenses to text file
+            if not logged_in:
+                username = input("Enter a username: ")
+                password = input("Enter a password: ")
+                signup(users,username, password)
+                save_users(users, USERS_FILE)
+            else:
+                amount = float(input("Enter the amount: "))
+                category = input("Enter the category: ")
+                description = input("Enter the description: ")
+                add_expense(expenses, amount, category, description)  # Call function to add expense
         elif choice == '2':
-            name = input("Enter crop name: ")
-            planting_date = input("Enter planting date: ")
-            variety = input("Enter crop variety: ")
-            add_crop(name, planting_date, variety)
-            save_crops()  # Save crops to text file
+            if not logged_in:
+                username = input("Enter your username: ")
+                password = input("Enter your password: ")
+                logged_in = login(username, password)
+            else:
+                name = input("Enter the name of the crop: ")
+                planting_date = input("Enter the planting date: ")
+                variety = input("Enter the variety: ")
+                add_crop(crops, name, planting_date, variety)
+               
         elif choice == '3':
-            display_expenses()
+            if logged_in:
+                display_expenses(expenses)
         elif choice == '4':
-            display_crops()
+            if logged_in:
+                display_crops(crops)  # Call function to display crops
         elif choice == '5':
+            if logged_in:
+                print("Logging out...")
+                logged_in = False
+            else:
+                print("Invalid choice. Please try again.")
+        elif choice == '6':
             print("Exiting program...")
             break
         else:

@@ -1,0 +1,67 @@
+# utils.py
+
+# Function to save users to a text file
+def save_users(users, filename):
+    with open(filename, "w") as file:
+        for username, password in users.items():
+            file.write(f"{username},{password}\n")
+
+# Function to load users from a text file
+def load_users(filename):
+    users = {}
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                username, password = line.strip().split(',')
+                users[username] = password
+    except FileNotFoundError:
+        # If the file doesn't exist, return an empty dictionary
+        pass
+    return users
+
+
+# Function to add an expense
+def add_expense(expenses, amount, category, description):
+    expenses.append({"amount": amount, "category": category, "description": description})
+
+# Function to add a crop
+def add_crop(crops, name, planting_date, variety):
+    crops.append({"name": name, "planting_date": planting_date, "variety": variety})
+
+# Function to display all expenses
+def display_expenses(expenses):
+    print("---- Expenses ----")
+    for expense in expenses:
+        print(f"Amount: {expense['amount']}, Category: {expense['category']}, Description: {expense['description']}")
+
+# Function to display all crops
+def display_crops(crops):
+    print("---- Crops ----")
+    for crop in crops:
+        print(f"Name: {crop['name']}, Planting Date: {crop['planting_date']}, Variety: {crop['variety']}")
+
+
+# Function to signup a new user
+def signup(users, username, password):
+    if username in users:
+        print("Username already exists. Please choose a different username.")
+        return False
+    else:
+        users[username] = password
+        print("Signup successful. Welcome, {}!".format(username))
+        return True
+    
+# Function to login an existing user
+def login(users, username, password):
+    if username not in users or users[username] != password:
+        print("Invalid username or password. Please try again.")
+        return False
+    else:
+        print("Login successful. Welcome back, {}!".format(username))
+        return True
+    
+# Function to logout a user
+def logout():
+    print("Logging out...")
+    return False
+
