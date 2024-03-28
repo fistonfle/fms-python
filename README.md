@@ -1,30 +1,42 @@
 # Farm Management System (FMS)
 
-## Overview
-The Farm Management System (FMS) is a command-line application developed in Python to help farmers manage their farm data, including expenses and crops. This application allows users to add, view, and update farm-related information through a simple command-line interface.
+The Farm Management System (FMS) is a command-line application developed in Python to help farmers manage their farm data, including expenses, crops, and user accounts. This README provides an overview of the project and documents the signup, login, and user data storage functionalities.
 
-## Features
-- Add expenses: Users can add expenses with details such as amount, category, and description.
-- Add crops: Users can add crops with details such as name, planting date, and variety.
-- View expenses: Users can view a list of all expenses recorded.
-- View crops: Users can view a list of all crops recorded.
+## Overview
+
+The FMS allows farmers to record and manage their expenses and crops through a simple command-line interface. Additionally, it provides user authentication functionalities, allowing users to sign up for new accounts and log in to existing accounts.
+
+## Signup
+
+To sign up for a new account, users can choose a username and password. The signup process ensures that the chosen username is unique. Upon successful signup, the user's account information is stored securely in a text file.
+
+## Login
+
+Registered users can log in to their accounts using their username and password. The login process verifies the provided credentials against the stored user data. Upon successful login, users are granted access to the system menu to manage their farm data.
+
+## User Data Storage
+
+User account information, including usernames and passwords, is stored securely in a text file. The system ensures data integrity and confidentiality by encrypting passwords before storing them. The user data storage mechanism allows for seamless user authentication and management.
 
 ## Usage
+
 1. Ensure you have Python installed on your system.
 2. Clone or download this repository.
 3. Open a terminal or command prompt and navigate to the project directory.
-4. Run the command `python farm_management_system.py` to start the application.
-5. Follow the on-screen prompts to interact with the Farm Management System.
+4. Run the command `python main.py` to start the Farm Management System.
+5. Follow the on-screen prompts to sign up for a new account or log in to an existing account.
 
 ## File Structure
-- `farm_management_system.py`: The main Python script containing the application logic.
-- `expenses.txt`: Text file storing the recorded expenses.
-- `crops.txt`: Text file storing the recorded crops.
+
+- `main.py`: The main Python script containing the application logic.
+- `utils.py`: A Python module containing utility functions for user authentication and data storage.
+- `users.txt`: Text file storing the registered user accounts (username and password).
 
 ## Requirements
+
 - Python 3.x
 
 ## Notes
-- Existing data is saved to and loaded from text files (`expenses.txt` and `crops.txt`) to maintain persistence between sessions.
-- This is a basic version of the Farm Management System and may be expanded with additional features and improvements in the future.
 
+- This is a basic version of the Farm Management System and may be expanded with additional features and improvements in the future.
+- For enhanced security, consider implementing password hashing and salting mechanisms.
