@@ -20,13 +20,45 @@ def load_users(filename):
     return users
 
 
-# Function to add an expense
-def add_expense(expenses, amount, category, description):
+# Function to add an expense and store it in a text file
+def add_expense(expenses, amount, category, description, filename):
     expenses.append({"amount": amount, "category": category, "description": description})
+    with open(filename, "a") as file:
+        file.write(f"{amount},{category},{description}\n")
 
-# Function to add a crop
-def add_crop(crops, name, planting_date, variety):
+# Function to add a crop and store it in a text file
+def add_crop(crops, name, planting_date, variety, filename):
     crops.append({"name": name, "planting_date": planting_date, "variety": variety})
+    with open(filename, "a") as file:
+        file.write(f"{name},{planting_date},{variety}\n")
+
+
+
+        # Function to load expenses from a text file
+def load_expenses(filename):
+    expenses = []
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                amount, category, description = line.strip().split(',')
+                expenses.append({"amount": amount, "category": category, "description": description})
+    except FileNotFoundError:
+        # If the file doesn't exist, return an empty list
+        pass
+    return expenses
+
+# Function to load crops from a text file
+def load_crops(filename):
+    crops = []
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                name, planting_date, variety = line.strip().split(',')
+                crops.append({"name": name, "planting_date": planting_date, "variety": variety})
+    except FileNotFoundError:
+        # If the file doesn't exist, return an empty list
+        pass
+    return crops
 
 # Function to display all expenses
 def display_expenses(expenses):

@@ -1,9 +1,14 @@
 # main.py
-from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users
+from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops
+
+
+CROPS_FILE = "crops.txt"
+
+EXPENSES_FILE = "expenses.txt"
 
 # Initialize expenses and crops lists
-expenses = []
-crops = []
+expenses = {}
+crops = {}
 
 # Initialize users dictionary
 users = {}
@@ -13,6 +18,12 @@ USERS_FILE = "users.txt"
 
 # Load users from file
 users = load_users(USERS_FILE)
+
+# Load expenses from file
+expenses = load_expenses(EXPENSES_FILE)
+
+# Load crops from file
+crops = load_crops(CROPS_FILE)
 
 # Function to login an existing user
 def login(username, password):
@@ -51,7 +62,7 @@ def main():
                 amount = float(input("Enter the amount: "))
                 category = input("Enter the category: ")
                 description = input("Enter the description: ")
-                add_expense(expenses, amount, category, description)  # Call function to add expense
+                add_expense(expenses, amount, category, description,EXPENSES_FILE)  # Call function to add expense
         elif choice == '2':
             if not logged_in:
                 username = input("Enter your username: ")
@@ -61,7 +72,7 @@ def main():
                 name = input("Enter the name of the crop: ")
                 planting_date = input("Enter the planting date: ")
                 variety = input("Enter the variety: ")
-                add_crop(crops, name, planting_date, variety)
+                add_crop(crops, name, planting_date, variety, CROPS_FILE)
                
         elif choice == '3':
             if logged_in:
