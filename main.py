@@ -2,13 +2,13 @@
 def save_expenses():
     with open("expenses.txt", "w") as file:
         for expense in expenses:
-            file.write(f"{expense['amount']},{expense['category']},{expense['description']}\n")
+            file.write("{},{},{}\n".format(expense['amount'], expense['category'], expense['description']))
 
 # Function to save crops to a text file
 def save_crops():
     with open("crops.txt", "w") as file:
         for crop in crops:
-            file.write(f"{crop['name']},{crop['planting_date']},{crop['variety']}\n")
+            file.write("{},{},{}\n".format(crop['name'], crop['planting_date'], crop['variety']))
 
 # Function to load expenses from a text file
 def load_expenses():
