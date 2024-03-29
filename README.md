@@ -27,7 +27,7 @@ The FMS allows farmers to record and manage their farm expenses and crops throug
 ## File Structure
 
 - `main.py`: The main Python script containing the application logic.
-- `utils.py`: A Python module containing utility functions for user authentication, data storage, and farm operations.
+- `utils.py`: A Python module containing user authentication, data storage, and farm operations utility functions.
 - `users.txt`: Text file storing the registered user accounts (username and password).
 - `expenses.txt`: Text file storing the recorded farm expenses.
 - `crops.txt`: Text file storing the information about the crops grown on the farm.
