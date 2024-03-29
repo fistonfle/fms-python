@@ -24,17 +24,16 @@ def load_users(filename):
 def add_expense(expenses, amount, category, description, filename):
     expenses.append({"amount": amount, "category": category, "description": description})
     with open(filename, "a") as file:
-        file.write( "{},{},{}\n".format(amount, category, description) )
+        file.write("{},{},{}\n".format(amount, category, description))
 
 # Function to add a crop and store it in a text file
 def add_crop(crops, name, planting_date, variety, filename):
     crops.append({"name": name, "planting_date": planting_date, "variety": variety})
     with open(filename, "a") as file:
-        file.write( "{},{},{}\n".format(name, planting_date, variety) )
+        file.write("{},{},{}\n".format(name, planting_date, variety))
 
 
-
-        # Function to load expenses from a text file
+# Function to load expenses from a text file
 def load_expenses(filename):
     expenses = []
     try:
@@ -64,13 +63,13 @@ def load_crops(filename):
 def display_expenses(expenses):
     print("---- Expenses ----")
     for expense in expenses:
-        print(f"Amount: {expense['amount']}, Category: {expense['category']}, Description: {expense['description']}")
+        print("Amount: {}, Category: {}, Description: {}".format(expense['amount'], expense['category'], expense['description']))
 
 # Function to display all crops
 def display_crops(crops):
     print("---- Crops ----")
     for crop in crops:
-        print(f"Name: {crop['name']}, Planting Date: {crop['planting_date']}, Variety: {crop['variety']}")
+        print("Name: {}, Planting Date: {}, Variety: {}".format(crop['name'], crop['planting_date'], crop['variety']))
 
 
 # Function to signup a new user
@@ -96,4 +95,3 @@ def login(users, username, password):
 def logout():
     print("Logging out...")
     return False
-
