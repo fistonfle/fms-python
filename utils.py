@@ -4,7 +4,7 @@
 def save_users(users, filename):
     with open(filename, "w") as file:
         for username, password in users.items():
-            file.write("{},{}\n".format(username, password)
+            file.write("{},{}\n".format(username, password))
 
 # Function to load users from a text file
 def load_users(filename):
