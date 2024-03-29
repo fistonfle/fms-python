@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # main.py
 from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops
 
