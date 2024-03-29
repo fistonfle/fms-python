@@ -1,6 +1,6 @@
 # utils.py
 
-# Function to save users to a text file
+# Function to save users to the text file
 def save_users(users, filename):
     with open(filename, "w") as file:
         for username, password in users.items():
