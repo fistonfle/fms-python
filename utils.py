@@ -24,13 +24,13 @@ def load_users(filename):
 def add_expense(expenses, amount, category, description, filename):
     expenses.append({"amount": amount, "category": category, "description": description})
     with open(filename, "a") as file:
-        file.write(f"{amount},{category},{description}\n")
+        file.write( "{},{},{}\n".format(amount, category, description) )
 
 # Function to add a crop and store it in a text file
 def add_crop(crops, name, planting_date, variety, filename):
     crops.append({"name": name, "planting_date": planting_date, "variety": variety})
     with open(filename, "a") as file:
-        file.write(f"{name},{planting_date},{variety}\n")
+        file.write( "{},{},{}\n".format(name, planting_date, variety) )
 
 
 
