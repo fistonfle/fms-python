@@ -1,2 +1,7 @@
 test crop,09-04-2024,test var
 tes,20-03-2024,var1
+testant,20-05-2024,var-test
+crop1,08-04-2024,car-1
+tea crop,09-07-2024,var-2
+beans,05 august 2023,kg
+irish potatoes,24,rooster 

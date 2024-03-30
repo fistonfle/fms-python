@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # main.py
 from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops, reset_password
 
@@ -6,8 +7,8 @@ CROPS_FILE = "crops.txt"
 EXPENSES_FILE = "expenses.txt"
 
 # Initialize expenses and crops lists
-expenses = {}
-crops = {}
+expenses = []
+crops = []
 
 # Initialize users dictionary
 users = {}
@@ -25,7 +26,7 @@ expenses = load_expenses(EXPENSES_FILE)
 crops = load_crops(CROPS_FILE)
 
 # Function to login an existing user
-def login(username, password):
+def login_user(username, password):
     if username not in users or users[username] != password:
         print("Invalid username or password. Please try again.")
         return False
@@ -56,18 +57,18 @@ def main():
             if not logged_in:
                 username = input("Enter a username: ")
                 password = input("Enter a password: ")
-                signup(users,username, password)
+                signup(users, username, password)
                 save_users(users, USERS_FILE)
             else:
                 amount = float(input("Enter the amount: "))
                 category = input("Enter the category: ")
                 description = input("Enter the description: ")
-                add_expense(expenses, amount, category, description,EXPENSES_FILE)  # Call function to add expense
+                add_expense(expenses, amount, category, description, EXPENSES_FILE)  # Call function to add expense
         elif choice == '2':
             if not logged_in:
                 username = input("Enter your username: ")
                 password = input("Enter your password: ")
-                logged_in = login(username, password)
+                logged_in = login_user(username, password)
             else:
                 name = input("Enter the name of the crop: ")
                 planting_date = input("Enter the planting date: ")
