@@ -91,7 +91,17 @@ def login(users, username, password):
     else:
         print("Login successful. Welcome back, {}!".format(username))
         return True
-    
+
+#Function to reset password when forgot
+def reset_password(users):
+    username = input("Enter your username: ")
+    if username in users:
+        new_password = input("Enter a new password: ")
+        users[username] = new_password
+        print("Password reset successfully!")
+    else:
+        print("Username not found.")
+
 # Function to logout a user
 def logout():
     print("Logging out...")

@@ -77,6 +77,9 @@ def main():
         elif choice == '3':
             if logged_in:
                 display_expenses(expenses)
+            else:
+                print("Forgot password, reset")
+                reset_password(users)
         elif choice == '4':
             if logged_in:
                 display_crops(crops)  # Call function to display crops
