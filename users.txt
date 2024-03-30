@@ -1,2 +1,5 @@
 Sharon,Keeah4.pamda
 test,tester
+freddy,eddy12345
+fiston ,fiston@123
+chantal,chantal123
