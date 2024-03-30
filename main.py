@@ -1,6 +1,5 @@
 # main.py
-from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops
-
+from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops, reset_password
 
 CROPS_FILE = "crops.txt"
 
@@ -42,6 +41,7 @@ def main():
         if not logged_in:
             print("1. Signup")
             print("2. Login")
+            print("3. Forgot Password,reset")
         else:
             print("1. Add Expense")
             print("2. Add Crop")
