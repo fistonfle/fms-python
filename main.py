@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # main.py
-from utils import add_expense, add_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops, reset_password
+from utils import add_expense, add_crop, edit_crop, display_expenses, display_crops, signup, login, load_users, save_users, load_expenses, load_crops, reset_password
 
 CROPS_FILE = "crops.txt"
 
@@ -48,8 +48,9 @@ def main():
             print("2. Add Crop")
             print("3. View Expenses")
             print("4. View Crops")
-            print("5. Logout")
-        print("6. Exit")
+            print("5. Edit Crop")
+            print("6. Logout")
+        print("7. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -84,13 +85,27 @@ def main():
         elif choice == '4':
             if logged_in:
                 display_crops(crops)  # Call function to display crops
-        elif choice == '5':
+      elif choice == '5':
+            if logged_in:
+                if crops:
+                    display_crops(crops)
+                    name = input("Enter the name of crop to edit: ")
+                    if 0 <= name < len(crops):
+                        new_name = input("Enter the new name: ")
+                        new_planting_date = input("Enter the new planting date: ")
+                        new_variety = input("Enter the new variety: ")
+                        edit_crop(crops, index, new_name, new_planting_date, new_variety, CROPS_FILE)
+                    else:
+                        print("Invalid name of crop.Try again")
+                else:
+                    print("No crops to edit.")
+      elif choice == '6':
             if logged_in:
                 print("Logging out...")
                 logged_in = False
             else:
                 print("Invalid choice. Please try again.")
-        elif choice == '6':
+        elif choice == '7':
             print("Exiting program...")
             break
         else:

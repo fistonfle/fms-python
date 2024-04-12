@@ -70,7 +70,20 @@ def display_crops(crops):
     print("---- Crops ----")
     for crop in crops:
         print("Name: {}, Planting Date: {}, Variety: {}".format(crop['name'], crop['planting_date'], crop['variety']))
+# Function to edit crops from the text file
+def edit_crops(crops,new_ name,new_ planting_date, new_variety, filename):
+    if name < 0 or name >= len(crops):
+        print("Invalid crop name.")
+        return
 
+    crops[name] = {"name": new_name,"planting_date": new_planting_date,"variety": new_variety}
+
+    # Rewrite the entire file with updated crop information
+    with open(filename, "w") as file:
+        for crop in crops:
+            file.write("{},{},{}\n".format(crop['name'], crop['planting_date'], crop['variety']))
+
+    print("Crop edited successfully.")
 
 # Function to signup a new user
 def signup(users, username, password):
@@ -90,7 +103,6 @@ def login(users, username, password):
     else:
         print("Login successful. Welcome back, {}!".format(username))
         return True
-
 #Function to reset password when forgot
 def reset_password(users):
     username = input("Enter your username: ")
@@ -100,7 +112,7 @@ def reset_password(users):
         print("Password reset successfully!")
     else:
         print("Username not found.")
-
+    
 # Function to logout a user
 def logout():
     print("Logging out...")

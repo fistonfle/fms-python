@@ -1,11 +1,8 @@
 Sharon,Keeah4.pamda
 test,tester
-<<<<<<< HEAD
 Keza,12345
 Kenny,1234
 6,
-=======
 freddy,eddy12345
 fiston ,fiston@123
 chantal,chantal123
->>>>>>> 81210533cf8b54e07d495e6ab39899e958a69aaf

@@ -1,7 +1,4 @@
 200.0,test,test desc
 200.0,test-cat,test-desc
-<<<<<<< HEAD
 800.0,rice,food
-=======
 200.0,grains,100 kg maize
->>>>>>> 81210533cf8b54e07d495e6ab39899e958a69aaf
