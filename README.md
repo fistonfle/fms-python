@@ -15,6 +15,7 @@ The FMS allows farmers to record and manage their farm expenses and crops throug
 - **View Expenses**: Users can view a list of recorded expenses.
 - **View Crops**: Users can view a list of the crops they have added to their farm.
 
+
 ## Usage
 
 1. Ensure you have Python installed on your system.
